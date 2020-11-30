@@ -1,0 +1,21 @@
+
+
+
+<div class="visual-holder">
+    <div id="sort-button-holder">
+        <input type="button" (click)="sortItems()" value="Sort!"/>
+        <input type="button" (click)="shuffleItems()" value="Shuffle!"/>
+        <input type="range" id="cowbell" name="cowbell" 
+         min="100" max="1000" [value]="delaySpeed" step="100">
+  <label for="cowbell">SPEED</label>
+    </div>
+    <div class="selection-holder">
+        <select #mySelect (change)="onChangeType(mySelect.value)">
+            <option *ngFor="let type of sortingTypes;" [value]="type.value">{{type.name}}</option>
+        </select>
+    </div>
+    <div class="item" *ngFor="let item of items" [(ngModel)]="selectedType" [ngStyle]="{'height':  CalculateHeight(item['number']), 'background-color': item['color']}">
+        {{item['number']}}
+    </div>
+    
+</div>
