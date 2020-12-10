@@ -28,9 +28,7 @@ export class VisualSortingComponent implements OnInit {
   ngOnInit(): void {
     this.shuffleArray(this.numbers);
     this.isSorted = false;
-    /*for(let i = 1;i <= 28;++i)
-      this.numbers.push(this.getRandomInt(20,90));
-*/
+   
     for(let i =0;i < this.numbers.length;i++)
     {
       this.items.push({
@@ -38,8 +36,6 @@ export class VisualSortingComponent implements OnInit {
         'color': 'red'
       })
     }
-
-    //this.bubbleSort(this.items);
   }
 
 resetItems(){
@@ -187,154 +183,6 @@ InsertionSort = async(arr: Array<object>) => {
   }
 }
 
-//[2,3,4,5]
-
-// merge (left:Array<object>, right:Array<object>, trackLeft: number, trackMiddle:number,trackRight: number){//mid:number){//left:Array<object>, right:Array<object>) {
-  
-
-//   let i,g, j, c:Array<number> = [];
-//   i = trackLeft;
-//   j = trackMiddle+1;
-//   g = trackLeft;
-  
-  
-//   let resultArray = [], leftIndex = 0, rightIndex = 0;
-
-//   // We will concatenate values into the resultArray in order
-//   while (leftIndex < left.length && rightIndex < right.length) {
-//     if (left[leftIndex] < right[rightIndex]) {
-//       resultArray.push(left[leftIndex]);
-      
-//       leftIndex++; // move left array cursor
-//     } else {
-//       resultArray.push(right[rightIndex]);
-//       this.registerSwap(trackLeft , trackMiddle++)
-//       rightIndex++; // move right array cursor
-//     }
-
-//     trackLeft++;
-//   }
-
-//   // We need to concat here because there will be one element remaining
-//   // from either left OR the right
-//   return resultArray
-//           .concat(left.slice(leftIndex))
-//           .concat(right.slice(rightIndex));
-  
-  
-  
-  
-  
-// //   while (i <= m && j <= r) {
-// //     console.log(j);
-// //     if (arr2[i]['number'] < arr2[j]['number']) {
-// //         c.push(arr2[i]['number']);
-// //         this.registerSwap(i++ , g++)
-        
-// //     }
-// //     else  {
-// //         c.push(arr2[j]['number']);
-// //         this.registerSwap(j++ , g++)
-// //     }
-// // }
-// // while (i <= m) {
-// //     c.push(arr2[i++]['number']);
-// // }
-// // while (j <= r) {
-// //     c.push(arr2[j++]['number']);
-    
-// // }
-// // console.log(c);
-// // for (let i = l, k = 0; i < c.length; i++)  {
-// //     arr2[i]['number'] = c[k++];
-    
-// // }
-
-  
-  
-  
-// }
-
-
-// mergeSort (unsortedArray:Array<object>, trackLeft:number, trackRight: number) {
-//   /// No need to sort the array if the array only has one element or empty
-//   if (unsortedArray.length <= 1) {
-//     return unsortedArray;
-//   }
-//   // In order to divide the array in half, we need to figure out the middle
-//   const middle = Math.floor(unsortedArray.length / 2);
-
-//   // This is where we will be dividing the array into left and right
-//   const left = unsortedArray.slice(0, middle);
-//   const right = unsortedArray.slice(middle);
-
-//   // Using recursion to combine the left and right
-//   return this.merge(
-//     this.mergeSort(left, trackLeft, middle), this.mergeSort(right, middle+1, trackRight), trackLeft, middle,trackRight
-//   );
-// }
-
-
-
-// // Merge two subarrays L and M into arr
-// merge = async( arr: Array<object>, p: number, q: number, r: number) => {
-
-//   // Create L ← A[p..q] and M ← A[q+1..r]
-//   let n1 = q - p + 1;
-//   let n2 = r - q;
-
-//   let L:Array<object>, M:Array<object>;
-
-//   for (let i = 0; i < n1; i++)
-//       L.push(arr[p + i]);
-//   for (let j = 0; j < n2; j++)
-//       M.push(arr[q + 1 + j]);
-
-//   // Maintain current index of sub-arrays and main array
-//   let i, j, k;
-//   i = 0;
-//   j = 0;
-//   k = p;
-
-//   // Until we reach either end of either L or M, pick larger among
-//   // elements L and M and place them in the correct position at A[p..r]
-//   while (i < n1 && j < n2) {
-//       if (L[i]['number'] <= M[j]['number']) {
-//           arr[k] = L[i];
-//           i++;
-//       } else {
-//           arr[k] = M[j];
-//           j++;
-//       }
-//       k++;
-//   }
-
-//   // When we run out of elements in either L or M,
-//   // pick up the remaining elements and put in A[p..r]
-//   while (i < n1) {
-//       arr[k] = L[i];
-//       i++;
-//       k++;
-//   }
-
-//   while (j < n2) {
-//       arr[k] = M[j];
-//       j++;
-//       k++;
-//   }
-// }
-
-// mergeSort(A:Array<object>, p:number, r:number){
-//     if (p > r) 
-//         return;
-//     let q = (p+r)/2;
-//     this.mergeSort(A, p, q);
-//     this.mergeSort(A, q+1, r);
-//     this.merge(A, p, q, r);
-// }
-
-
-
 
 merge = async(arr:Array<object>, l:number, m:number, r:number) =>
 {
@@ -396,14 +244,8 @@ mergeSort = async(arr:Array<object>, l:number, r:number) =>
 
 
 MergeSort = async(arr:Array<object>) =>{
-  //let test = [];//Object.assign([], arr);
-  //arr.forEach(val => test.push(Object.assign({}, val)));
   this.mergeSort(arr, 0, arr.length-1);
-
-  //this.performSortSwapSteps(arr);
 }
-
-
 
 
 quicksort(A:Array<object>, lo: number, hi: number){
@@ -456,18 +298,8 @@ heap_root = async(input, i, length) => {
 
     if (max != i) {
         this.swap(input, i, max);
-        //await this.sleep(this.delaySpeed);
         input[i]['color'] = "green";
         input[max]['color'] = "blue";
-        /*await this.sleep(this.delaySpeed);
-        input[i]['color'] = "blue";
-        input[max]['color'] = "blue";
-        await this.sleep(this.delaySpeed)
-        this.swapNumbers(input, i, max, this.delaySpeed);
-        input[max]['color'] = "red";
-*/
-
-
         this.heap_root(input, max, length);
     }
 }
@@ -493,22 +325,13 @@ sleep2(seconds)
       }
 
     for (let i = input.length - 1; i > 0; i--) {
-      
-        /*this.sleep2(300);
-        this.swap(input, 0, i);
-*/
-
         await this.sleep(this.delaySpeed);
         input[0]['color'] = "blue";
         input[i]['color'] = "blue";
         await this.sleep(this.delaySpeed)
         this.swapNumbers(input, 0, i, this.delaySpeed);
         input[i]['color'] = "red";
-
-
         array_length--;
-      
-      
         this.heap_root(input, 0, array_length);
     }
 }
